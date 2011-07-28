@@ -1,8 +1,12 @@
 %h1 My tasks
 
--@tasks.each do |task|
-  =task.title
-  %br
+-if @tasks.length == 0
+  No tasks
+-else
+  -@tasks.each do |task|
+    =task.title
+    =link_to 'Destroy', task, :method => :delete
+    %br
 
 %br
 %br
