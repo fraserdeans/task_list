@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title TaskList
+    =stylesheet_link_tag :all
+    =javascript_include_tag :defaults
+    =csrf_meta_tag
+  %body
+    %p.success= flash[:success]
+    %p.notice= flash[:notice]
+    %p.alert= flash[:alert]
+    = yield
