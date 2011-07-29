@@ -1,12 +1,16 @@
 !!!
 %html
   %head
-    %title TaskList
+    %title Your Task List
     =stylesheet_link_tag :all
     =javascript_include_tag :defaults
     =csrf_meta_tag
   %body
-    %p.success= flash[:success]
-    %p.notice= flash[:notice]
-    %p.alert= flash[:alert]
-    = yield
+    #container
+      -if flash[:success]
+        %p.success= flash[:success]
+      -if flash[:notice]
+        %p.notice= flash[:notice]
+      -if flash[:alert]
+        %p.alert= flash[:alert]
+      = yield
