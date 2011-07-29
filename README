@@ -1,1 +1,4 @@
-Not much here.......
+Clone it
+Gem install bundler
+bundle install
+db:schema:load
