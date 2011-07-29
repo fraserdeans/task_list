@@ -1,4 +1,5 @@
 Clone it
-Gem install bundler
-bundle install
-db:schema:load
+Go inside
+'Gem install bundler'
+'bundle install'
+'rake db:schema:load'
