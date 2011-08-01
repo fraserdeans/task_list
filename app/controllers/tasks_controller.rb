@@ -1,7 +1,13 @@
 class TasksController < ApplicationController
+  respond_to :json, :html
+
   def index
     @tasks = Task.all
+ end
+
+  def new
     @task = Task.new
+    respond_with @task
   end
 
   def create
@@ -12,7 +18,7 @@ class TasksController < ApplicationController
         format.html { redirect_to(tasks_path,
                       :flash => {:success => 'Task added successfully'})}
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "index" }
       end
     end
   end
@@ -20,8 +26,10 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-
-    redirect_to(tasks_path, :flash => { :success => 'Task deleted' })
+    respond_to do |format|
+      format.html {redirect_to(tasks_path, :flash => { :success => 'Task deleted' }) }
+      format.js {render :nothing => true}
+    end
   end
 
   def show

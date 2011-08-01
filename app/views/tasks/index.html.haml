@@ -3,9 +3,17 @@
 -if @tasks.length == 0
   %p No tasks
 -else
-  -@tasks.each do |task|
-    =task.title
-    =link_to 'x', task, :method => :delete
-    %br
+  %table
+    -@tasks.each do |task|
+      %tr
+        %td
+          =task.title
+        %td.delete_link
+          =button_to 'x', task, :method => :delete, :class=> 'delete_task'
 
-=render 'new'
+%section#new_task
+  =link_to 'Add new task', new_task_path, :class => 'hide_with_js'
+
+
+%div.hide
+  =render :partial => 'shared/templates'

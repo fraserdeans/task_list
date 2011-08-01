@@ -1,0 +1,11 @@
+%script(type='text/html' id='template_new_task' class='hide')
+  %h2 Add new task
+  -form_for Task.new do |f|
+    =f.label :title
+    =f.text_field :title
+    =f.submit
+
+%script(type='text/html' id='template_delete_link')
+  %a(href='{{link}}' class='delete_me' data-method='delete' rel="nofollow")
+    x
+

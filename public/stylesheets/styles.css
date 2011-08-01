@@ -2,6 +2,9 @@ body {
   background-color: #eeeeee;
   font-family: "Helvetica"; }
 
+.hide {
+  display: none; }
+
 #container {
   width: 400px;
   margin-left: auto;
