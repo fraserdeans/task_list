@@ -9,7 +9,8 @@
         %td
           =task.title
         %td.delete_link
-          =button_to 'x', task, :method => :delete, :class=> 'delete_task'
+          =button_to 'x', task, :method => :delete, :class => 'hide_with_js'
+          =link_to 'x', task, :method => :delete, :remote => true, :class => 'delete_task hide show_with_js'
 
 %section#new_task
   =link_to 'Add new task', new_task_path, :class => 'hide_with_js'

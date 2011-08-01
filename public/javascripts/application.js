@@ -8,20 +8,14 @@ Shutl.closeMessages = function(){
 };
 
 Shutl.deleteTask = function(){
-  ich.grabTemplates();
-  var elem = $('.delete_task');
-  var link = elem.closest('form').attr('action');
-  elem.closest('form').remove();
-
-  var stuff = {
-    link:link
-  };
-
-  var delete_task_link = ich.template_delete_link(stuff);
-  $('td.delete_link').html(delete_task_link);
-
-  $('.delete_me').bind('ajax:success', function(){
-    $(this).closest('tr').fadeOut();
+  $('.delete_task').bind('ajax:success', function(){
+    var len = $(this).closest('table').find('tr').length;
+    $(this).closest('tr').fadeOut(300, function(){
+      $(this).remove();
+    });
+    if(len == 1){
+      $('h1').after('<p>No tasks</p>');
+    }
   });
 }
 
@@ -31,8 +25,8 @@ $(document).ready(function(){
   ich.grabTemplates();
 
   $('.hide_with_js').hide();
+  $('.show_with_js').show();
 
   var new_task_form = ich.template_new_task;
   $('#new_task').html(new_task_form);
-
 });
